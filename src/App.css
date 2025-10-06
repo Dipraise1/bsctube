@@ -1,0 +1,99 @@
+/* Additional App-specific styles */
+.app {
+  min-height: 100vh;
+  background-color: #000000;
+}
+
+/* Ensure proper spacing and layout */
+.container {
+  min-height: 100vh;
+}
+
+/* Fix for the coming soon text positioning */
+.content-area {
+  position: relative;
+}
+
+.coming-soon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+/* Ensure sidebar items are properly spaced */
+.sidebar > div {
+  margin-bottom: 20px;
+}
+
+.sidebar > div:last-child {
+  margin-bottom: 0;
+}
+
+/* Trending sidebar styling */
+.trending-sidebar {
+  border-left: 1px solid #333333;
+}
+
+/* Header styling */
+.header {
+  border-bottom: 1px solid #333333;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* Search bar container */
+.header > div:first-child {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Right side buttons in header */
+.header > div:last-child {
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .trending-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  
+  .header {
+    flex-direction: row;
+    gap: 10px;
+    padding: 15px;
+    justify-content: space-between;
+  }
+  
+  .header > div:first-child {
+    flex: 1;
+    max-width: none;
+  }
+  
+  .header > div:last-child {
+    flex-shrink: 0;
+  }
+  
+  .content-area {
+    padding: 20px;
+  }
+  
+  .coming-soon {
+    text-align: center;
+    line-height: 1.2;
+  }
+}
