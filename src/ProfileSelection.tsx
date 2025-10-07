@@ -16,24 +16,19 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = ({ onProfileSelect }) 
   const profiles: Profile[] = [
     {
       id: '1',
-      name: 'Cz Palu',
-      avatar: 'CP',
+      name: 'Cz',
+      avatar: '/cz photo.jpg',
       isMain: true
     },
     {
       id: '2',
-      name: 'Cz Paulo',
-      avatar: 'CP'
+      name: 'Broccoli',
+      avatar: '/brocolli photo.jpg'
     },
     {
       id: '3',
-      name: 'Cz Partner',
-      avatar: 'CP'
-    },
-    {
-      id: '4',
-      name: 'Cz Team',
-      avatar: 'CT'
+      name: 'Palu',
+      avatar: '/palu.jpg'
     }
   ]
 
@@ -63,7 +58,7 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = ({ onProfileSelect }) 
               onClick={() => onProfileSelect(profile)}
             >
               <div className="profile-avatar">
-                {profile.avatar}
+                <img src={profile.avatar} alt={profile.name} className="profile-image" />
               </div>
               <div className="profile-name">{profile.name}</div>
               {profile.isMain && (

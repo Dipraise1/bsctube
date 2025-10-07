@@ -241,20 +241,57 @@
   text-decoration: underline;
 }
 
-.login-button {
+.enter-button {
   background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   color: #000000;
   border: none;
-  border-radius: 12px;
-  padding: 12px;
+  border-radius: 16px;
+  padding: 20px 60px;
   font-family: 'Schoolbell', cursive;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-  letter-spacing: 0.5px;
-  width: 100%;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  min-width: 200px;
+}
+
+.enter-button:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+}
+
+.enter-button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.enter-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.simple-login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.enter-button-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.enter-button-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: brightness(0);
 }
 
 .login-button:hover:not(:disabled) {
