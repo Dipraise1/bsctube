@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import logoImage from './assets/logo.png'
+import LoginPage from './LoginPage'
+import VideoGrid from './VideoGrid'
+import ProfileSelection from './ProfileSelection'
 
 // Icons as SVG components
 const HomeIcon = () => (
@@ -47,6 +50,31 @@ const MenuIcon = () => (
 )
 
 const App: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [showProfile, setShowProfile] = useState(false)
+  const [showProfileSelection, setShowProfileSelection] = useState(false)
+  const [selectedProfile, setSelectedProfile] = useState<any>(null)
+
+  const handleProfileClick = () => {
+    setShowProfile(!showProfile)
+  }
+
+  const handleProfileSelect = (profile: any) => {
+    setSelectedProfile(profile)
+    setShowProfileSelection(false)
+    setIsLoggedIn(true)
+  }
+
+  // Show login page if not logged in
+  if (!isLoggedIn && !showProfileSelection) {
+    return <LoginPage onLogin={() => setShowProfileSelection(true)} />
+  }
+
+  // Show profile selection after login
+  if (showProfileSelection) {
+    return <ProfileSelection onProfileSelect={handleProfileSelect} />
+  }
+
   return (
     <div className="container">
       {/* Left Sidebar */}
@@ -73,11 +101,11 @@ const App: React.FC = () => {
         <div>
           <div className="section-title">SOCIALS</div>
           <div className="social-links">
-            <a href="#" className="social-link">
+            <a href="https://t.me/bsctube" target="_blank" rel="noopener noreferrer" className="social-link">
               <TelegramIcon />
               Telegram
             </a>
-            <a href="#" className="social-link">
+            <a href="https://x.com/bsctube" target="_blank" rel="noopener noreferrer" className="social-link">
               <XIcon />
               Our X
             </a>
@@ -126,10 +154,10 @@ const App: React.FC = () => {
       {/* Mobile Social Links - only visible on mobile */}
       <div className="mobile-social-section">
         <div className="mobile-social-links">
-          <a href="#" className="mobile-social-link">
+          <a href="https://t.me/bsctube" target="_blank" rel="noopener noreferrer" className="mobile-social-link">
             <TelegramIcon />
           </a>
-          <a href="#" className="mobile-social-link">
+          <a href="https://x.com/bsctube" target="_blank" rel="noopener noreferrer" className="mobile-social-link">
             <XIcon />
           </a>
           <button className="btn-yellow mobile-buy-btn">
@@ -156,17 +184,28 @@ const App: React.FC = () => {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <button className="btn-gray-round">
+            <button className="btn-gray-round" onClick={handleProfileClick}>
               <UserIcon />
             </button>
+            {showProfile && (
+              <div className="profile-dropdown">
+                <div className="profile-info">
+                  <div className="profile-avatar">
+                    {selectedProfile ? selectedProfile.avatar : 'CP'}
+                  </div>
+                  <div className="profile-name">
+                    {selectedProfile ? selectedProfile.name : 'Cz Palu'}
+                  </div>
+                  <div className="profile-characters">4 characters</div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Content Area */}
         <div className="content-area">
-          <div className="coming-soon">
-            Coming soon
-          </div>
+          <VideoGrid />
         </div>
       </div>
 
