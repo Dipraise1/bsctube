@@ -473,9 +473,9 @@ body {
 .mobile-search-container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex: 1;
-  max-width: 200px;
+  max-width: 250px;
 }
 
 .mobile-search-bar {
@@ -486,7 +486,7 @@ body {
   color: #ffffff;
   font-family: 'Schoolbell', cursive;
   font-size: 14px;
-  width: 120px;
+  width: 100px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   letter-spacing: 0.3px;
@@ -578,7 +578,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #111111;
+    background-color: #000000;
     border-top: 1px solid #333333;
     display: flex;
     justify-content: space-around;
@@ -591,13 +591,16 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    color: #ffffff;
+    color: #FFD700;
     text-decoration: none;
     font-family: 'Schoolbell', cursive;
     font-size: 12px;
     padding: 8px;
     border-radius: 8px;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
   
   .mobile-nav-item:hover {
@@ -606,6 +609,7 @@ body {
   
   .mobile-nav-item.active {
     color: #FFD700;
+    background-color: rgba(255, 215, 0, 0.1);
   }
   
   .mobile-nav-icon {

@@ -88,6 +88,26 @@
   color: #FFD700;
 }
 
+/* Non-clickable video styles */
+.video-card.non-clickable {
+  cursor: not-allowed;
+  opacity: 0.5;
+  filter: grayscale(70%);
+}
+
+.video-card.non-clickable:hover {
+  transform: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.video-card.non-clickable:hover .thumbnail-video {
+  transform: none;
+}
+
+.video-card.non-clickable:hover .video-channel {
+  color: #cccccc;
+}
+
 .video-stats {
   font-family: 'Schoolbell', cursive;
   font-size: 12px;

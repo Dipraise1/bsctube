@@ -1,0 +1,404 @@
+/* Video Player Styles - YouTube Style */
+.video-player-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #000000;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.video-player-main {
+  flex: 1;
+  max-width: 800px;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  background-color: #000000;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.main-video {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.video-info-section {
+  background-color: #111111;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.video-title {
+  font-family: 'Schoolbell', cursive;
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.video-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.channel-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.channel-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.channel-details h3 {
+  font-family: 'Schoolbell', cursive;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.subscriber-count {
+  font-family: 'Schoolbell', cursive;
+  font-size: 14px;
+  color: #cccccc;
+  margin: 0;
+}
+
+.video-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.subscribe-btn, .like-btn, .share-btn {
+  font-family: 'Schoolbell', cursive;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.subscribe-btn {
+  background-color: #FF0000;
+  color: #ffffff;
+}
+
+.subscribe-btn:hover {
+  background-color: #CC0000;
+}
+
+.like-btn, .share-btn {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.like-btn:hover, .share-btn:hover {
+  background-color: #444444;
+}
+
+.video-description {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.video-description p {
+  font-family: 'Schoolbell', cursive;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Comments Section */
+.comments-section {
+  width: 100%;
+  max-width: 400px;
+}
+
+.comments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #333333;
+}
+
+.comments-header h3 {
+  font-family: 'Schoolbell', cursive;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.sort-btn {
+  font-family: 'Schoolbell', cursive;
+  font-size: 14px;
+  color: #FFD700;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.sort-btn:hover {
+  color: #ffffff;
+}
+
+.add-comment-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+
+.comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.comment-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.comment-input {
+  font-family: 'Schoolbell', cursive;
+  font-size: 14px;
+  padding: 12px;
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  color: #ffffff;
+  width: 100%;
+  resize: none;
+}
+
+.comment-input:focus {
+  outline: none;
+  border-color: #FFD700;
+}
+
+.comment-submit-btn {
+  font-family: 'Schoolbell', cursive;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 16px;
+  background-color: #FFD700;
+  color: #000000;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: background-color 0.3s ease;
+}
+
+.comment-submit-btn:hover {
+  background-color: #FFC700;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comment-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.comment-author {
+  font-family: 'Schoolbell', cursive;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.comment-time {
+  font-family: 'Schoolbell', cursive;
+  font-size: 12px;
+  color: #999999;
+}
+
+.comment-text {
+  font-family: 'Schoolbell', cursive;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 1.4;
+  margin: 0 0 8px 0;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.like-comment-btn, .reply-btn, .like-reply-btn, .reply-to-reply-btn {
+  font-family: 'Schoolbell', cursive;
+  font-size: 12px;
+  color: #999999;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.like-comment-btn:hover, .reply-btn:hover, .like-reply-btn:hover, .reply-to-reply-btn:hover {
+  color: #FFD700;
+}
+
+.comment-reply {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 12px;
+  margin-left: 20px;
+  padding-left: 12px;
+  border-left: 2px solid #333333;
+}
+
+.reply-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.reply-content {
+  flex: 1;
+}
+
+.reply-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.reply-author {
+  font-family: 'Schoolbell', cursive;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.reply-time {
+  font-family: 'Schoolbell', cursive;
+  font-size: 11px;
+  color: #999999;
+}
+
+.reply-text {
+  font-family: 'Schoolbell', cursive;
+  font-size: 12px;
+  color: #ffffff;
+  line-height: 1.4;
+  margin: 0 0 6px 0;
+}
+
+.reply-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .video-player-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .comments-section {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-player-container {
+    padding: 16px;
+  }
+  
+  .video-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .video-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .video-title {
+    font-size: 20px;
+  }
+  
+  .main-video {
+    max-height: 50vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-player-container {
+    padding: 12px;
+  }
+  
+  .video-info-section {
+    padding: 16px;
+  }
+  
+  .video-title {
+    font-size: 18px;
+  }
+  
+  .comment-reply {
+    margin-left: 10px;
+    padding-left: 8px;
+  }
+}

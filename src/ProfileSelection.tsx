@@ -45,7 +45,7 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = ({ onProfileSelect }) 
 
       <div className="profile-selection-content">
         <div className="profile-header">
-          <img src="/src/assets/logo.png" alt="BSCTUBE Logo" className="profile-logo" />
+          <img src="/favicon.png" alt="BSCTUBE Logo" className="profile-logo" />
           <h1 className="profile-title handwritten-bold">BSCTUBE</h1>
           <p className="profile-subtitle handwritten">Who's watching?</p>
         </div>

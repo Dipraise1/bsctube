@@ -4,6 +4,7 @@ import logoImage from './assets/logo.png'
 import LoginPage from './LoginPage'
 import VideoGrid from './VideoGrid'
 import ProfileSelection from './ProfileSelection'
+import VideoPlayer from './VideoPlayer'
 
 // Icons as SVG components
 const HomeIcon = () => (
@@ -54,9 +55,33 @@ const App: React.FC = () => {
   const [showProfile, setShowProfile] = useState(false)
   const [showProfileSelection, setShowProfileSelection] = useState(false)
   const [selectedProfile, setSelectedProfile] = useState<any>(null)
+  const [currentPage, setCurrentPage] = useState('home')
+  const [showP2PPopup, setShowP2PPopup] = useState(false)
+  const [showVideoPlayer, setShowVideoPlayer] = useState(false)
 
   const handleProfileClick = () => {
     setShowProfile(!showProfile)
+  }
+
+  const handlePageChange = (page: string) => {
+    setCurrentPage(page)
+    setShowProfile(false) // Close profile dropdown when changing pages
+  }
+
+  const handleP2PClick = () => {
+    setShowP2PPopup(true)
+  }
+
+  const handleCloseP2P = () => {
+    setShowP2PPopup(false)
+  }
+
+  const handleVideoClick = () => {
+    setShowVideoPlayer(true)
+  }
+
+  const handleBackToHome = () => {
+    setShowVideoPlayer(false)
   }
 
   const handleProfileSelect = (profile: any) => {
@@ -73,6 +98,18 @@ const App: React.FC = () => {
   // Show profile selection after login
   if (showProfileSelection) {
     return <ProfileSelection onProfileSelect={handleProfileSelect} />
+  }
+
+  // Show video player when video is clicked
+  if (showVideoPlayer) {
+    return (
+      <div className="video-player-page">
+        <button className="back-to-home-btn" onClick={handleBackToHome}>
+          ← Back to Home
+        </button>
+        <VideoPlayer />
+      </div>
+    )
   }
 
   return (
@@ -145,11 +182,33 @@ const App: React.FC = () => {
           <button className="btn-gray-round">
             <SearchIcon />
           </button>
-          <button className="btn-gray-round">
-            <UserIcon />
+            <button className="btn-yellow p2p-button" onClick={handleP2PClick}>
+              P2E
+            </button>
+          <button className="btn-gray-round profile-icon-btn" onClick={handleProfileClick}>
+            <img src={selectedProfile ? selectedProfile.avatar : '/cz photo.jpg'} alt={selectedProfile ? selectedProfile.name : 'Cz'} className="profile-icon-image" />
           </button>
         </div>
       </div>
+
+      {/* Mobile Profile Dropdown */}
+      {showProfile && (
+        <div className="mobile-profile-dropdown">
+          <div className="profile-info">
+            <div className="profile-avatar">
+              {selectedProfile ? (
+                <img src={selectedProfile.avatar} alt={selectedProfile.name} className="profile-dropdown-image" />
+              ) : (
+                'CP'
+              )}
+            </div>
+            <div className="profile-name">
+              {selectedProfile ? selectedProfile.name : 'Cz'}
+            </div>
+            <div className="profile-characters">4 characters</div>
+          </div>
+        </div>
+      )}
 
       {/* Mobile Social Links - only visible on mobile */}
       <div className="mobile-social-section">
@@ -184,17 +243,24 @@ const App: React.FC = () => {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <button className="btn-gray-round" onClick={handleProfileClick}>
-              <UserIcon />
+            <button className="btn-yellow p2p-button" onClick={handleP2PClick}>
+              P2E
+            </button>
+            <button className="btn-gray-round profile-icon-btn" onClick={handleProfileClick}>
+              <img src={selectedProfile ? selectedProfile.avatar : '/cz photo.jpg'} alt={selectedProfile ? selectedProfile.name : 'Cz'} className="profile-icon-image" />
             </button>
             {showProfile && (
               <div className="profile-dropdown">
                 <div className="profile-info">
                   <div className="profile-avatar">
-                    {selectedProfile ? selectedProfile.avatar : 'CP'}
+                    {selectedProfile ? (
+                      <img src={selectedProfile.avatar} alt={selectedProfile.name} className="profile-dropdown-image" />
+                    ) : (
+                      'CP'
+                    )}
                   </div>
                   <div className="profile-name">
-                    {selectedProfile ? selectedProfile.name : 'Cz Palu'}
+                    {selectedProfile ? selectedProfile.name : 'Cz'}
                   </div>
                   <div className="profile-characters">4 characters</div>
                 </div>
@@ -205,7 +271,30 @@ const App: React.FC = () => {
 
         {/* Content Area */}
         <div className="content-area">
-          <VideoGrid />
+          {currentPage === 'home' && <VideoGrid onVideoClick={handleVideoClick} />}
+          {currentPage === 'shorts' && (
+            <div className="coming-soon-page">
+              <div className="coming-soon">
+                Coming soon
+              </div>
+            </div>
+          )}
+          {currentPage === 'profile' && (
+            <div className="profile-page">
+              <div className="profile-section">
+                <h2 className="profile-section-title">Profile Settings</h2>
+                <div className="profile-details">
+                  <div className="profile-avatar-large">
+                    <img src={selectedProfile ? selectedProfile.avatar : '/cz photo.jpg'} alt={selectedProfile ? selectedProfile.name : 'Cz'} className="profile-large-image" />
+                  </div>
+                  <div className="profile-info-large">
+                    <h3 className="profile-name-large">{selectedProfile ? selectedProfile.name : 'Cz'}</h3>
+                    <p className="profile-characters-large">4 characters</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -249,19 +338,50 @@ const App: React.FC = () => {
 
       {/* Mobile Navigation - YouTube style */}
       <div className="mobile-nav">
-        <a href="#" className="mobile-nav-item active">
+        <button 
+          className={`mobile-nav-item ${currentPage === 'home' ? 'active' : ''}`}
+          onClick={() => handlePageChange('home')}
+        >
           <HomeIcon />
           <span>Home</span>
-        </a>
-        <a href="#" className="mobile-nav-item">
+        </button>
+        <button 
+          className={`mobile-nav-item ${currentPage === 'shorts' ? 'active' : ''}`}
+          onClick={() => handlePageChange('shorts')}
+        >
           <PlayCircleIcon />
           <span>Shorts</span>
-        </a>
-        <a href="#" className="mobile-nav-item">
+        </button>
+        <button 
+          className={`mobile-nav-item ${currentPage === 'profile' ? 'active' : ''}`}
+          onClick={() => handlePageChange('profile')}
+        >
           <UserIcon />
           <span>Profile</span>
-        </a>
+        </button>
       </div>
+
+      {/* P2P Popup */}
+      {showP2PPopup && (
+        <div className="p2p-popup-overlay" onClick={handleCloseP2P}>
+          <div className="p2p-popup" onClick={(e) => e.stopPropagation()}>
+            <div className="p2p-popup-header">
+              <h2 className="p2p-popup-title">Play-to-Earn</h2>
+              <button className="p2p-close-btn" onClick={handleCloseP2P}>
+                ×
+              </button>
+            </div>
+            <div className="p2p-popup-content">
+              <div className="p2p-coming-soon">
+                Play to earn🙏
+              </div>
+              <p className="p2p-description">
+                Play-to-earn features will be available soon!
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -40,7 +40,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         <div className="login-form">
           {/* BSCTUBE Logo */}
           <div className="login-logo">
-            <img src="/src/assets/logo.png" alt="BSCTUBE" className="login-logo-img" />
+            <img src="/favicon.png" alt="BSCTUBE" className="login-logo-img" />
             <h1 className="login-title">BSCTUBE</h1>
             <p className="login-subtitle">The Ultimate Crypto Video Platform</p>
           </div>
@@ -63,7 +63,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 <div className="loading-spinner"></div>
               ) : (
                 <div className="enter-button-content">
-                  <img src="/src/assets/logo.png" alt="BSCTUBE Logo" className="enter-button-logo" />
+                  <img src="/favicon.png" alt="BSCTUBE Logo" className="enter-button-logo" />
                   <span>ENTER</span>
                 </div>
               )}
